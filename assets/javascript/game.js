@@ -7,13 +7,14 @@ var wins = 0;
 var losses = 0;
 var guessesLeft = 10;
 var guessesDisplay = [];
+var currentGuesses = [];
 
 // Variables for where in HTML things need to go.
 var directionsText = document.getElementById("directions-text");
 var winsText = document.getElementById("wins-text");
 var lossesText = document.getElementById("losses-text");
 var guessesText = document.getElementById("guessesLeft-text");
-var guessesDisplay = document.getElementById("guesses-text");
+var guessesListText = document.getElementById("guesses-text");
 
 // This function runs when the user presses a key.
 
@@ -35,17 +36,31 @@ document.onkeyup = function() {
         (userguess === "k") || 
         (userguess === "w")) {
         wins++;
+        // (guessesLeft === 0);
+        // break;
     
+        } else if (guessesLeft === 0) {
+            setGameOver();
         } else {
+            currentGuesses.push(userguess);
             losses++;
+            --guessesLeft;
+           
         
         }
+
         winsText.textContent = "Wins: " + wins;
         lossesText.textContent = "Losses: " + losses;
         guessesText.textContent = "Guesses Left: " + guessesLeft; 
-        
+        guessesListText.textContent = "Your Guesses so far: " + guessesDisplay + currentGuesses;        
 
 
+        function setGameOver() {
+            wins = 0;
+            losses = 0;
+            guessesLeft = 10;
+            guessesDisplay = ' '; 
+        }
     // }
 
    
