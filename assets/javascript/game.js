@@ -6,7 +6,6 @@ var letters = ["h", "a", "k", "w"];
 var wins = 0;
 var losses = 0;
 var guessesLeft = 10;
-var guessesDisplay = [];
 var currentGuesses = [];
 
 // Variables for where in HTML things need to go.
@@ -36,8 +35,7 @@ document.onkeyup = function() {
         (userguess === "k") || 
         (userguess === "w")) {
         wins++;
-        // (guessesLeft === 0);
-        // break;
+    
     
         } else if (guessesLeft === 0) {
             setGameOver();
@@ -52,14 +50,14 @@ document.onkeyup = function() {
         winsText.textContent = "Wins: " + wins;
         lossesText.textContent = "Losses: " + losses;
         guessesText.textContent = "Guesses Left: " + guessesLeft; 
-        guessesListText.textContent = "Your Guesses so far: " + guessesDisplay + currentGuesses;        
+        guessesListText.textContent = "Your Guesses so far: " + currentGuesses;        
 
 
         function setGameOver() {
             wins = 0;
             losses = 0;
             guessesLeft = 10;
-            guessesDisplay = ' '; 
+            currentGuesses = []; 
         }
     // }
 
