@@ -16,7 +16,6 @@ var guessesText = document.getElementById("guessesLeft-text");
 var guessesListText = document.getElementById("guesses-text");
 
 // This function runs when the user presses a key.
-
 document.onkeyup = function() {
     var userguess = String.fromCharCode(event.keyCode).
         toLowerCase();
@@ -28,16 +27,14 @@ document.onkeyup = function() {
     var chosenLetters = letters[Math.floor(Math.random()*letters.length)];
 
     // How to lose or win the game
-
-    // for (var i=0; i < letters.length; i++){
         if ((userguess === "h") || 
         (userguess === "a") || 
         (userguess === "k") || 
         (userguess === "w")) {
         wins++;
     
-    
         } else if (guessesLeft === 0) {
+            // End game when user has run out of guesses
             setGameOver();
         } else {
             currentGuesses.push(userguess);
@@ -59,12 +56,12 @@ document.onkeyup = function() {
             guessesLeft = 10;
             currentGuesses = []; 
         }
-    // }
+   
 
    
 }
    
-    // Display the users progress in the game.
+   
    
 
 
